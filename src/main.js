@@ -254,8 +254,8 @@ const SystemFonts = function (options = {}) {
             directories = [
                 ...directories,
                 path.join(path.resolve(process.env.APPDATA, '..'), 'Local', 'Microsoft', 'Windows', 'Fonts'),
-                path.join(winDir, 'Fonts')
-                //path.join(os.homedir(), 'AppData', 'Roaming', 'Adobe', 'CoreSync', 'plugins', 'livetype', 'r')
+                path.join(winDir, 'Fonts'),
+                path.join(os.homedir(), 'AppData', 'Roaming', 'Adobe', 'CoreSync', 'plugins', 'livetype', 'r')
             ];
         } else { // some flavor of Linux, most likely
             const home = process.env.HOME;

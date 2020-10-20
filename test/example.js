@@ -3,18 +3,14 @@ const SystemFonts = require('../dist/main').default;
 const fontkit = require('fontkit');
 
 const systemFonts = new SystemFonts({ debug: true, fontkit });
-// const request = [
-//     {family: 'Avenir Next', style: 'Bold'},
-//     {family: 'Avenir Next', style: 'Demi Bold Italic'},
-//     {family: 'Avenir Next', style: 'Demi Bold'},
-//     {family: 'HaveHeartTwo', style: 'Regular'},
-//     {family: 'Avenir Next', style: 'Heavy'},
-//     {family: 'Avenir Next', style: 'Medium'}
-// ];
+const request = [
+    {family: 'Ballet Harmony', style: 'Ballet Harmony'},
+    {family: 'Raleway', style: 'Light'}
+];
 
-// // systemFonts.findFonts(request).then( result => {
-// //     console.log(result);
-// // }).catch(e => console.error(e));
+systemFonts.findFonts(request).then( result => {
+    console.log(result);
+}).catch(e => console.error(e));
 
 // console.log(systemFonts.findFontsSync(request));
 
@@ -26,9 +22,9 @@ const systemFonts = new SystemFonts({ debug: true, fontkit });
 //     });
 // });
 
-const dir = 'test/test-folder';
-fs.readdir(dir, (err, files) => {
-    const arr = files.map(file => dir + '/' + file);
-    console.log(arr);
-    systemFonts.installFonts(arr).then(res => console.log(res)).catch(e => console.error('ERR', e));
-});
+// const dir = 'test/test-folder';
+// fs.readdir(dir, (err, files) => {
+//     const arr = files.map(file => dir + '/' + file);
+//     console.log(arr);
+//     systemFonts.installFonts(arr).then(res => console.log(res)).catch(e => console.error('ERR', e));
+// });
