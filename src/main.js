@@ -25,8 +25,8 @@ const recGetFile = (target) => {
         }
         return files
             .reduce((arr, f) => {
-                if(f.toLowerCase() === 'deleted') return [];
-                return arr.concat(recGetFile(path.join(target, f)));
+                const _files = f.toLowerCase() === 'deleted' ? [] : recGetFile(path.join(target, f));
+                return arr.concat(_files);
             }, []);
     } else {
         const ext = path.extname(target).toLowerCase();
