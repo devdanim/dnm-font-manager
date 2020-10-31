@@ -304,7 +304,8 @@ const SystemFonts = function (options = {}) {
                             debug('Error reading font ' + file, err2);
                             resolve1(null);
                         } else {
-                            const fonts = fontMeta2.fonts || fontMeta2;
+                            let fonts = fontMeta2.fonts || fontMeta2;
+                            if (!fonts.length) fonts = [fonts];
                             const fontInfos = fonts.map(font => fontkitTableToObj(font, file, !customFontFiles.has(file)));
                             resolve1(fontInfos.length === 0 ? null : fontInfos.length === 1 ? fontInfos[0] : fontInfos);
                         }
