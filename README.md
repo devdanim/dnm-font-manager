@@ -58,7 +58,7 @@ const fontList = systemFonts.findFontsSync(search);
 This library will not throw an error if it finds a bad or incomplete font. It is designed to skip over any fonts which it has trouble reading.
 
 ### Work In Progress
-Method to check if a font is installed, and install it if not.
+Method to check if a font is installed, and install it if needed
 
 ### npm Scripts
 Run the tests:

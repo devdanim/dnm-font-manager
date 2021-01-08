@@ -353,24 +353,23 @@ const SystemFonts = function (options = {}) {
             .filter(f => customFontFiles.has(f));
 
         filteredFontFiles.forEach(file => promiseList.push(this.getFontInfo(file)));
-        Promise.all(promiseList).then(
-            (_res) => {
-                const res = [];
-                _res.forEach(fonts => {
-                    if(fonts) {
-                        if(fonts.length) {
-                            fonts.forEach(font => res.push(font));
-                        } else res.push(fonts);
-                    }
-                });
-                const names = res.reduce(extendedReducer, new Map());
-                const namesArr = [...names.values()]
-                    .sort((a, b) => a.family.localeCompare(b.family));
+        Promise.all(promiseList).then((_res) => {
+            const res = [];
+            _res.forEach(fonts => {
+                if(fonts) {
+                    if(fonts.length) {
+                        fonts.forEach(font => {
+                            if (font.family) res.push(font)
+                        });
+                    } else if (fonts.family) res.push(fonts);
+                }
+            });
+            const names = res.reduce(extendedReducer, new Map());
+            const namesArr = [...names.values()]
+                .sort((a, b) => a.family.localeCompare(b.family));
 
-                resolve(reorderWithAlt(namesArr));
-            },
-            (err) => reject(err)
-        );
+            resolve(reorderWithAlt(namesArr));
+        }).catch(err => reject(err));
     });
 
     this.getFontsExtendedSync = () => {
@@ -383,8 +382,10 @@ const SystemFonts = function (options = {}) {
             const metas = this.getFontInfoSync(font);
             if(metas) {
                 if(metas.length) {
-                    metas.forEach(meta => res.push(meta));
-                } else res.push(metas);
+                    metas.forEach(meta => {
+                        if (meta.family) res.push(meta)
+                    });
+                } else if (metas.family) res.push(metas);
             }
         });
         const names = res.reduce(extendedReducer, new Map());
