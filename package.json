@@ -1,6 +1,6 @@
 {
   "name": "dnm-font-manager",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Search system fonts with family and style using pure JavaScript, forked from rBurgett/system-font-families",
   "main": "dist/main.js",
   "scripts": {
